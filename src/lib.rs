@@ -6,5 +6,7 @@
 #![doc = include_str!("../README.md")]
 
 pub(crate) mod countries;
+#[cfg(feature = "dio")]
+pub mod dioxus;
 #[cfg(feature = "yew")]
 pub mod yew;
