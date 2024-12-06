@@ -1,21 +1,37 @@
 # 📚 Yew Tailwind Components
 
-## 📖 Introduction
+## 🛠️ Pre-requisites:
 
-[Yew](https://yew.rs/) is a modern Rust framework for building multi-threaded front-end web applications. It aims to provide a productive and pleasant experience for developing front-end applications in Rust, leveraging its safety and performance benefits. By utilizing Yew, we can create interactive and efficient web applications with ease.
+1. Install [`rustup`](https://www.rust-lang.org/tools/install):
+
+    ```bash
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    ```
+
+1. Install [`trunk`](https://trunkrs.dev/):
+
+    ```bash
+    cargo install --locked trunk
+    ```
+
+1. Add Wasm target:
+
+    ```bash
+    rustup target add wasm32-unknown-unknown
+    ```
 
 ## 🚀 Building and Running
 
 1. Fork/Clone the GitHub repository.
 
 	```bash
-	git clone https://github.com/wiseaidev/input-yew
+	git clone https://github.com/opensass/input-rs
 	```
 
 1. Navigate to the application directory.
 
 	```bash
-	cd examples/tailwind
+	cd input-rs/examples/yew
 	```
 
 1. Run the client:
@@ -28,7 +44,7 @@ Navigate to http://localhost:3000 to explore all available components.
 
 ## 🌀 Tailwind CSS Components
 
-This section lists components implemented using the [Tailwind CSS](https://tailwindcss.com/) framework. Tailwind CSS is a utility-first CSS framework that provides a set of pre-defined classes to quickly build custom and responsive designs.
+This section lists components implemented using the [Tailwind CSS](https://tailwindcss.com/) framework.
 
 ### 🔐 Login Forms
 

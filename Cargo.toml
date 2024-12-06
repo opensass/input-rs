@@ -1,27 +1,38 @@
 [package]
-name = "input_yew"
-version = "0.1.10"
-description = "A feature-rich, accessible, highly customizable, functional, reusable input component for the Yew framework."
-license = "Apache-2.0"
-keywords = ["input", "yew", "rust", "input_yew"]
-repository = "https://github.com/wiseaidev/input-yew"
-documentation = "https://docs.rs/input_yew/"
-authors = ["Mahmoud Harmouch <oss@wiseai.dev>"]
+name = "input-rs"
+version = "0.2.0"
 edition = "2021"
-exclude = ["/assets", "/examples"]
+rust-version = "1.79"
+description = "A feature-rich, accessible, highly customizable, functional, reusable input component for Wasm Frameworks."
+license = "Apache-2.0"
+keywords = ["input", "yew", "rust", "input-yew", "dioxus", "leptos", "input-rs"]
+categories = ["science"]
+repository = "https://github.com/opensass/input-rs"
+documentation = "https://docs.rs/input-rs/"
+authors = ["Mahmoud Harmouch <oss@wiseai.dev>"]
+exclude = ["assets", "examples"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 web-sys = { version = "0.3.64", default-features = false }
-yew = { version = "0.21.0", default-features = false }
+yew = { version = "0.21.0", default-features = false, optional = true }
 
 [dev-dependencies]
 regex = "1.10.2"
 serde = { version = "1.0.193", features = ["derive"] }
 
+[features]
+yew = ["dep:yew"]
+
 [profile.release]
-codegen-units = 1
 opt-level = "z"
+debug = false
 lto = "thin"
+codegen-units = 1
+panic = "abort"
 strip = "symbols"
+incremental = false
+
+[badges]
+maintenance = { status = "actively-developed" }

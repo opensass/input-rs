@@ -1,3 +1,4 @@
+#[allow(unused)]
 pub static COUNTRY_CODES: [(&str, &str, &str, &str, &str, &str); 246] = [
     (
         "+93",
