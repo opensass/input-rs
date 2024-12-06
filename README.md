@@ -15,7 +15,7 @@
 
 </div>
 
-## 🎬 Yew Demo
+## 🎬 Demo
 
 | Input Type | Demo                                         |
 | ---------- | -------------------------------------------- |
@@ -37,7 +37,7 @@ A reusable input component built for WASM frameworks like Yew, Dioxus, and Lepto
 5. **♿ Accessible**: User-friendly and built for inclusivity.
 6. **❌ Error Handling**: Displays clear error messages for invalid input.
 
-## ⚙️ Installation Yew
+## ⚙️ Yew Installation
 
 You can quickly integrate this Custom Reusable Input Component into your Yew project by following these simple steps:
 
