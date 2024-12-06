@@ -20,6 +20,7 @@ yew = { version = "0.21.0", default-features = false, optional = true }
 dioxus = { version = "0.5", optional = true }
 
 [dev-dependencies]
+bump2version = "0.1.4"
 regex = "1.10.2"
 serde = { version = "1.0.193", features = ["derive"] }
 
