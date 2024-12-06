@@ -182,7 +182,7 @@ pub struct InputProps {
     pub multiple: bool,
 
     /// Regex pattern the value must match to be valid.
-    #[props(default = "")]
+    #[props(default = ".*")]
     pub pattern: &'static str,
 
     /// Boolean indicating whether the input is read-only.
