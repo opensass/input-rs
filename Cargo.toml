@@ -1,6 +1,6 @@
 [package]
 name = "input-rs"
-version = "0.2.2"
+version = "0.2.3"
 edition = "2021"
 rust-version = "1.79"
 description = "A feature-rich, accessible, highly customizable, functional, reusable input component for Wasm Frameworks."

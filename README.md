@@ -11,7 +11,7 @@
 
 [![Open SASS Discord](https://dcbadge.limes.pink/api/server/b5JbvHW5nv)](https://discord.gg/b5JbvHW5nv)
 
-![logo](./assets/logo.png)
+![logo](./assets/logo-new.png)
 
 </div>
 
