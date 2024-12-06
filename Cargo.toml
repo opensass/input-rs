@@ -18,6 +18,7 @@ exclude = ["assets", "examples"]
 web-sys = { version = "0.3", default-features = false }
 yew = { version = "0.21.0", default-features = false, optional = true }
 dioxus = { version = "0.5", optional = true }
+leptos = { version = "0.7.0", optional = true }
 
 [dev-dependencies]
 bump2version = "0.1.4"
@@ -27,6 +28,7 @@ serde = { version = "1.0.193", features = ["derive"] }
 [features]
 yew = ["dep:yew", ]
 dio = ["dioxus", ]
+lep = ["leptos", ]
 
 [profile.release]
 opt-level = "z"
