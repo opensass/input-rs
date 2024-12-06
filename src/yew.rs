@@ -1,5 +1,4 @@
 use crate::countries::COUNTRY_CODES;
-use std::collections::HashMap;
 use web_sys::HtmlInputElement;
 use yew::prelude::*;
 
@@ -343,13 +342,9 @@ pub fn input(props: &Props) -> Html {
 
     let valid = *props.valid_handle;
 
-    let aria_invalid = props.aria_invalid;
-
     let eye_icon_active = props.eye_active;
 
     let eye_icon_disabled = props.eye_disabled;
-
-    let aria_required = props.aria_required;
 
     let r#type = props.r#type;
 
@@ -487,7 +482,7 @@ pub fn input(props: &Props) -> Html {
                     size="20"
                     minlength="9"
                     value={(*props.handle).clone()}
-                    maxlength="14"
+                    maxlength={props.maxlength.map(|v| v.to_string())}
                     class={props.input_class}
                     placeholder={props.placeholder}
                     aria-label={props.aria_label}

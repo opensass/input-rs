@@ -1,0 +1,48 @@
+[application]
+
+# App (Project) Name
+name = "input-rs"
+
+# Dioxus App Default Platform
+# desktop, web
+default_platform = "web"
+
+# `build` & `serve` dist path
+out_dir = "dist"
+
+# resource (assets) file folder
+asset_dir = "assets"
+
+[web.app]
+
+# HTML title tag content
+title = "input-rs"
+
+[web.watcher]
+
+# when watcher trigger, regenerate the `index.html`
+reload_html = true
+
+# which files or dirs will be watcher monitoring
+watch_path = ["src", "assets"]
+
+# include `assets` in web platform
+[web.resource]
+
+# CSS style file
+style = [
+   # online cdn.
+   "https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
+]
+
+# Javascript code file
+script = [
+   # online cdn.
+   "https://kit.fontawesome.com/8f223ead6e.js"
+]
+
+[web.resource.dev]
+
+# Javascript code file
+# serve: [dev-server] only
+script = []
