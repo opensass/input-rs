@@ -6,8 +6,7 @@ edition = "2021"
 [dependencies]
 console_error_panic_hook = "0.1.7"
 input-rs = { path = "../../", features = ["lep"] }
-leptos = { version = "0.7.0", features = ["csr"] }
-log = "0.4.22"
+leptos = { version = "0.7.2", features = ["csr"] }
 regex = "1.11.1"
 serde = "1.0.215"
 wasm-logger = "0.2.0"
