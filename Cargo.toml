@@ -3,7 +3,7 @@ name = "input-rs"
 version = "0.2.3"
 edition = "2021"
 rust-version = "1.79"
-description = "A feature-rich, accessible, highly customizable, functional, reusable input component for Wasm Frameworks."
+description = "🔤 A highly customizable input component for WASM frameworks like Yew, Dioxus, and Leptos."
 license = "Apache-2.0"
 keywords = ["input", "yew", "dioxus", "leptos", "input-rs"]
 categories = ["web-programming", "science"]
@@ -17,8 +17,8 @@ exclude = ["assets", "examples"]
 [dependencies]
 web-sys = { version = "0.3", default-features = false }
 yew = { version = "0.21.0", default-features = false, optional = true }
-dioxus = { version = "0.5", optional = true }
-leptos = { version = "0.7.0", optional = true }
+dioxus = { version = "0.6.1", optional = true }
+leptos = { version = "0.7.2", optional = true }
 
 [dev-dependencies]
 bump2version = "0.1.4"
@@ -38,6 +38,10 @@ codegen-units = 1
 panic = "abort"
 strip = "symbols"
 incremental = false
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
 
 [badges]
 maintenance = { status = "actively-developed" }

@@ -1,7 +1,7 @@
 #![allow(unused)]
 
 use crate::countries::COUNTRY_CODES;
-use leptos::{prelude::*, *};
+use leptos::{ev::MouseEvent, prelude::*, *};
 
 /// A custom input component that handles user input and validation.
 ///
@@ -336,7 +336,6 @@ pub fn Input(
     let input_ref: NodeRef<html::Input> = NodeRef::new();
 
     let onchange = {
-        let validate_function = validate_function.clone();
         move |ev: web_sys::Event| {
             let input_value = input_ref.get().expect("<input> should be mounted").value();
             handle.1.set(input_value.clone());
@@ -345,7 +344,7 @@ pub fn Input(
     };
 
     let on_toggle_password = {
-        move |ev: web_sys::Event| {
+        move |ev: MouseEvent| {
             if eye_active_handle.get() {
                 set_password_type.set("password".to_string());
             } else {
@@ -355,9 +354,9 @@ pub fn Input(
         }
     };
 
-    // TODO: Fix me. Matching logic in Leptos is such a pain.
     let tag = {
-        move || match r#type {
+        move || {
+            match r#type {
             "password" => Some(view! {
                 <>
                     <input
@@ -388,19 +387,18 @@ pub fn Input(
                         max={max}
                         accept={accept}
                     />
-                    // <span
-                    //     class={if eye_active_handle.get() { eye_active } else { eye_disabled }}
-                    //     on:click={on_toggle_password}
-                    // />
+                    <span
+                        class={if eye_active_handle.get() { eye_active } else { eye_disabled }}
+                        on:click={on_toggle_password}
+                    />
                 </>
-            }),
+            }.into_any()),
             // "textarea" => Some(view! {
             //     <>
             //         <textarea
             //             class={input_class}
             //             id={id}
             //             name={name}
-            //             value={handle.get()}
             //             placeholder={placeholder}
             //             aria-label={aria_label}
             //             aria-required={aria_required}
@@ -409,26 +407,27 @@ pub fn Input(
             //             on:input={onchange}
             //             required={required}
             //             node_ref={input_ref}
-            //             autocomplete={autocomplete}
-            //             autocapitalize={autocapitalize}
-            //             readonly={readonly}
-            //             minlength={minlength.map(|v| v.to_string())}
-            //             maxlength={maxlength.map(|v| v.to_string())}
-            //             disabled={disabled}
             //         />
             //     </>
-            // }),
+            // }.into_any()),
             "tel" => Some(view! {
                 <>
-                    // <select class={field_class} on:change={onchange}>
-                    //     { for (code, emoji, _, name, _, _) in COUNTRY_CODES {
-                    //         view! {
-                    //             <option value={*code} selected={*code == handle.get()}>{ format!("{} {} {}", emoji, name, code) }</option>
-                    //         }
-                    //     } }
-                    // </select>
+                    <select class={field_class} on:change={onchange}>
+                        <For
+                            each=move || COUNTRY_CODES
+                            key=|country| *country
+                            let:country
+                        >
+                            {move || {
+                                let (code, emoji, _, name, _, _) = country;
+                                view! {
+                                    <option value={code} selected={*code == handle.0.get()}>{ format!("{} {} {}", emoji, name, code) }</option>
+                                }
+                            }}
+                        </For>
+                    </select>
                     <input
-                        r#type={"tel".to_string()}
+                        r#type={"tel"}
                         class={input_class}
                         id={id}
                         name={name}
@@ -456,7 +455,7 @@ pub fn Input(
                         accept={accept}
                     />
                 </>
-            }),
+            }.into_any()),
             _ => Some(view! {
                 <>
                     <input
@@ -488,7 +487,8 @@ pub fn Input(
                         accept={accept}
                     />
                 </>
-            }),
+            }.into_any()),
+        }
         }
     };
 

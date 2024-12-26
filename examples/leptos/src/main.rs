@@ -2,6 +2,7 @@ use input_rs::leptos::Input;
 use leptos::{prelude::*, task::spawn_local};
 use regex::Regex;
 use serde::{Deserialize, Serialize};
+use leptos::logging::log;
 
 #[derive(Debug, Default, Clone, Serialize, Deserialize)]
 struct LoginUserSchema {
@@ -52,7 +53,7 @@ fn LoginForm() -> impl IntoView {
         spawn_local(async move {
             if email_valid && password_valid {
                 // API call
-                log::info!(
+                log!(
                     "Logged in with Email: {}, Password: {}",
                     email_ref,
                     password_ref
