@@ -7,9 +7,6 @@ name = "input-rs"
 # desktop, web
 default_platform = "web"
 
-# `build` & `serve` dist path
-out_dir = "dist"
-
 # resource (assets) file folder
 asset_dir = "assets"
 
@@ -30,16 +27,10 @@ watch_path = ["src", "assets"]
 [web.resource]
 
 # CSS style file
-style = [
-   # online cdn.
-   "https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"
-]
+style = []
 
 # Javascript code file
-script = [
-   # online cdn.
-   "https://kit.fontawesome.com/8f223ead6e.js"
-]
+script = []
 
 [web.resource.dev]
 

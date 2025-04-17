@@ -20,6 +20,8 @@ fn main() {
 
 fn app() -> Element {
     rsx! {
+        document::Script { src: "https://kit.fontawesome.com/8f223ead6e.js" },
+        document::Stylesheet { href: "https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" },
         MultiStepFormOne {}
     }
 }

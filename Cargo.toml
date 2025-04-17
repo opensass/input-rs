@@ -2,7 +2,7 @@
 name = "input-rs"
 version = "0.2.4"
 edition = "2021"
-rust-version = "1.79"
+rust-version = "1.82"
 description = "🔤 A highly customizable input component for WASM frameworks like Yew, Dioxus, and Leptos."
 license = "Apache-2.0"
 keywords = ["input", "yew", "dioxus", "leptos", "input-rs"]
@@ -17,8 +17,8 @@ exclude = ["assets", "examples"]
 [dependencies]
 web-sys = { version = "0.3", default-features = false }
 yew = { version = "0.21.0", default-features = false, optional = true }
-dioxus = { version = "0.6.1", optional = true }
-leptos = { version = "0.7.2", optional = true }
+dioxus = { version = "0.6.3", optional = true }
+leptos = { version = "0.7.7", optional = true }
 
 [dev-dependencies]
 bump2version = "0.1.4"
