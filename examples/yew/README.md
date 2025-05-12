@@ -78,9 +78,6 @@
    trunk serve --port 3000
    ```
 
-1. Uncomment this line:
-   https://github.com/opensass/input-rs/blob/f17f89fc85f464381beb5bc9c5596a9def7924ce/examples/yew/index.html#L5
-
 Navigate to http://localhost:3000 to explore all available components.
 
 ## 🌀 Tailwind CSS Components
