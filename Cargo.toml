@@ -1,6 +1,6 @@
 [package]
 name = "input-rs"
-version = "0.2.5"
+version = "0.2.6"
 edition = "2024"
 rust-version = "1.86"
 description = "🔤 A highly customizable input component for WASM frameworks like Yew, Dioxus, and Leptos."
