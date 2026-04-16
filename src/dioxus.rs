@@ -4,7 +4,7 @@ use dioxus::prelude::*;
 /// Props for a custom input component.
 /// This struct includes all possible attributes for an HTML `<input>` element.
 /// See [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) for more details.
-#[derive(Props, PartialEq, Clone)]
+#[derive(Props, Clone)]
 pub struct InputProps {
     /// The type of the input, e.g., "text", "password", etc.
     #[props(default = "text")]
@@ -208,6 +208,61 @@ pub struct InputProps {
     /// Same as the `width` attribute for `<img>` elements.
     #[props(default = None)]
     pub width: Option<u32>,
+}
+
+impl PartialEq for InputProps {
+    fn eq(&self, other: &Self) -> bool {
+        self.r#type == other.r#type
+            && self.label == other.label
+            && self.name == other.name
+            && self.required == other.required
+            && self.error_message == other.error_message
+            && self.input_class == other.input_class
+            && self.field_class == other.field_class
+            && self.label_class == other.label_class
+            && self.class == other.class
+            && self.error_class == other.error_class
+            && self.icon_class == other.icon_class
+            && self.handle == other.handle
+            && self.valid_handle == other.valid_handle
+            && std::ptr::fn_addr_eq(self.validate_function, other.validate_function)
+            && self.eye_active == other.eye_active
+            && self.eye_disabled == other.eye_disabled
+            && self.id == other.id
+            && self.placeholder == other.placeholder
+            && self.aria_label == other.aria_label
+            && self.aria_required == other.aria_required
+            && self.aria_invalid == other.aria_invalid
+            && self.aria_describedby == other.aria_describedby
+            && self.accept == other.accept
+            && self.alt == other.alt
+            && self.autocapitalize == other.autocapitalize
+            && self.autocomplete == other.autocomplete
+            && self.capture == other.capture
+            && self.checked == other.checked
+            && self.dirname == other.dirname
+            && self.disabled == other.disabled
+            && self.form == other.form
+            && self.formaction == other.formaction
+            && self.formenctype == other.formenctype
+            && self.formmethod == other.formmethod
+            && self.formnovalidate == other.formnovalidate
+            && self.formtarget == other.formtarget
+            && self.height == other.height
+            && self.list == other.list
+            && self.max == other.max
+            && self.maxlength == other.maxlength
+            && self.min == other.min
+            && self.minlength == other.minlength
+            && self.multiple == other.multiple
+            && self.pattern == other.pattern
+            && self.readonly == other.readonly
+            && self.size == other.size
+            && self.src == other.src
+            && self.step == other.step
+            && self.value == other.value
+            && self.width == other.width
+    }
 }
 
 /// A custom input component that handles user input and validation.
