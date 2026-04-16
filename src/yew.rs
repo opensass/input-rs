@@ -539,7 +539,7 @@ pub fn input(props: &Props) -> Html {
             </div>
             if !valid {
                 <div class={props.error_class} id={props.aria_describedby}>
-                    { &props.error_message }
+                    { props.error_message }
                 </div>
             }
         </div>
