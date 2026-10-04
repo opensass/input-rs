@@ -2,7 +2,7 @@
 
 Adding Input RS to your project is simple:
 
-1. Make sure your project is set up with **Dioxus**. Refer to the [Dioxus Getting Started Guide](https://dioxuslabs.com/learn/0.6/getting_started) for setup instructions.
+1. Make sure your project is set up with **Dioxus**. Refer to the [Dioxus Getting Started Guide](https://dioxuslabs.com/learn/0.7/getting_started) for setup instructions.
 
 1. Add the Input component to your dependencies by including it in your `Cargo.toml` file.
 

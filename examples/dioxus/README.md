@@ -40,7 +40,7 @@
    sudo apt install build-essential pkg-config libudev-dev
    ```
 
-1. Install [`Dioxus CLI`](https://dioxuslabs.com/learn/0.5/getting_started):
+1. Install [`Dioxus CLI`](https://dioxuslabs.com/learn/0.7/getting_started):
 
    ```sh
    cargo install dioxus-cli

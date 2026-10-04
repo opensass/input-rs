@@ -12,24 +12,27 @@
 [![Open SASS Discord](https://dcbadge.limes.pink/api/server/b5JbvHW5nv)](https://discord.gg/b5JbvHW5nv)
 
 <!-- absolute url for docs.rs cause assets is excluded from crate -->
+
 ![logo](https://raw.githubusercontent.com/opensass/input-rs/refs/heads/main/assets/logo-new.png)
 
 </div>
 
 ## 🎬 Demo
+
 <!-- absolute urls for docs.rs cause assets is excluded from crate -->
-| Input Type | Demo                                         |
-| ---------- | -------------------------------------------- |
+
+| Input Type | Demo                                                                                                           |
+| ---------- | -------------------------------------------------------------------------------------------------------------- |
 | Text       | ![text-demo](https://raw.githubusercontent.com/opensass/input-rs/refs/heads/main/assets/text-demo.gif)         |
 | Password   | ![pass-demo](https://raw.githubusercontent.com/opensass/input-rs/refs/heads/main/assets/pass-demo.gif)         |
 | Textarea   | ![textarea-demo](https://raw.githubusercontent.com/opensass/input-rs/refs/heads/main/assets/textarea-demo.gif) |
 | Telephone  | ![tel-demo](https://raw.githubusercontent.com/opensass/input-rs/refs/heads/main/assets/tel-demo.gif)           |
 
-| Framework | Live Demo |
-| --- | --- |
-| Yew | [![Netlify Status](https://api.netlify.com/api/v1/badges/45d208ab-8b1b-4608-bcb1-f7d3d049cac5/deploy-status)](https://input-rs.netlify.app) |
-| Dioxus | [![Netlify Status](https://api.netlify.com/api/v1/badges/b94e6586-192b-4db8-bc09-b287366c9731/deploy-status)](https://input-rs-dioxus.netlify.app) |
-| Leptos | [![Netlify Status](https://api.netlify.com/api/v1/badges/7b6175fa-892b-4a05-9fd5-b425b399e48f/deploy-status)](https://input-rs-leptos.netlify.app) |
+| Framework | Live Demo                                                                                                                                          |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Yew       | [![Netlify Status](https://api.netlify.com/api/v1/badges/45d208ab-8b1b-4608-bcb1-f7d3d049cac5/deploy-status)](https://input-rs.netlify.app)        |
+| Dioxus    | [![Netlify Status](https://api.netlify.com/api/v1/badges/b94e6586-192b-4db8-bc09-b287366c9731/deploy-status)](https://input-rs-dioxus.netlify.app) |
+| Leptos    | [![Netlify Status](https://api.netlify.com/api/v1/badges/7b6175fa-892b-4a05-9fd5-b425b399e48f/deploy-status)](https://input-rs-leptos.netlify.app) |
 
 ### 📜 Intro
 
@@ -48,16 +51,19 @@ The following features make Input RS a must-have for your WASM-based projects:
 ## Y Yew Usage
 
 <!-- absolute url for docs.rs cause YEW.md is not included in crate -->
+
 Refer to [our guide](https://github.com/opensass/input-rs/blob/main/YEW.md) to integrate this component into your Yew app.
 
 ## 🧬 Dioxus Usage
 
 <!-- absolute url for docs.rs cause DIOXUS.md is not included in crate -->
+
 Refer to [our guide](https://github.com/opensass/input-rs/blob/main/DIOXUS.md) to integrate this component into your Dioxus app.
 
 ## 🌱 Leptos Usage
 
 <!-- absolute url for docs.rs cause LEPTOS.md is not included in crate -->
+
 Refer to [our guide](https://github.com/opensass/input-rs/blob/main/LEPTOS.md) to integrate this component into your Leptos app.
 
 ## 🤝 Contributions

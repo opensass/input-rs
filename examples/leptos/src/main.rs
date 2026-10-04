@@ -1,8 +1,8 @@
 use input_rs::leptos::Input;
+use leptos::logging::log;
 use leptos::{prelude::*, task::spawn_local};
 use regex::Regex;
 use serde::{Deserialize, Serialize};
-use leptos::logging::log;
 
 #[derive(Debug, Default, Clone, Serialize, Deserialize)]
 struct LoginUserSchema {

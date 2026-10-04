@@ -151,6 +151,10 @@ pub fn Input(
     #[prop(default = "")]
     input_class: &'static str,
 
+    /// The inline CSS style for the bare `<input>` in otp_mode.
+    #[prop(default = "")]
+    input_style: &'static str,
+
     /// The CSS class to be applied to the inner input element and icon.
     #[prop(default = "")]
     field_class: &'static str,
@@ -329,6 +333,29 @@ pub fn Input(
     /// Same as the `width` attribute for `<img>` elements.
     #[prop(default = None)]
     width: Option<u32>,
+
+    /// When `true`, bypasses wrapper divs and renders only the bare `<input>`.
+    /// Intended for composable slot components such as OTP inputs.
+    #[prop(default = false)]
+    otp_mode: bool,
+
+    /// Callback fired when the input gains focus. Active only when `otp_mode` is `true`.
+    #[prop(optional)]
+    on_focus: Option<Callback<ev::FocusEvent>>,
+
+    /// Callback fired when the input loses focus. Active only when `otp_mode` is `true`.
+    #[prop(optional)]
+    on_blur: Option<Callback<ev::FocusEvent>>,
+
+    /// Raw `oninput` / `on:input` event handler for `otp_mode`.
+    /// When provided, fires **instead of** the default handle-setting `onchange` so the
+    /// caller (OtpSlot) can clear the DOM value.
+    #[prop(optional)]
+    on_input: Option<Callback<web_sys::Event>>,
+
+    /// `inputmode` attribute, hints the virtual keyboard type (e.g. `"numeric"`).
+    #[prop(default = "")]
+    inputmode: &'static str,
 ) -> impl IntoView {
     let (eye_active_handle, set_eye_active_handle) = signal(false);
     let (password_type, set_password_type) = signal("password".to_string());
@@ -492,6 +519,40 @@ pub fn Input(
         }
     };
 
+    if otp_mode {
+        return view! {
+            <input
+                r#type=r#type
+                class=input_class
+                style=input_style
+                id=id
+                name=name
+                value=handle.0.get()
+                placeholder=placeholder
+                aria-label=aria_label
+                aria-required=aria_required
+                aria-invalid=aria_invalid
+                aria-describedby=aria_describedby
+                autocomplete=autocomplete
+                inputmode=inputmode
+                maxlength=maxlength.map(|v| v.to_string())
+                pattern=pattern
+                disabled=disabled
+                required=required
+                on:input=move |e: web_sys::Event| {
+                    if let Some(ref cb) = on_input {
+                        cb.run(e);
+                    } else {
+                        onchange(e);
+                    }
+                }
+                on:focus=move |e| { if let Some(cb) = &on_focus { cb.run(e); } }
+                on:blur=move |e| { if let Some(cb) = &on_blur { cb.run(e); } }
+            />
+        }
+        .into_any();
+    }
+
     view! {
         <div class={class}>
             <label class={label_class} for={id}>{label}</label>
@@ -512,4 +573,5 @@ pub fn Input(
             }
         </div>
     }
+    .into_any()
 }

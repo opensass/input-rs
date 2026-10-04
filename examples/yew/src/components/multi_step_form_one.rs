@@ -380,21 +380,21 @@ pub fn multi_step_form_one() -> Html {
                     validate_function={validate_input}
                 />
                 <Input
-                    r#type={"password"}
-                    label={"Password"}
+                    r#type="password"
+                    label="Password"
                     handle={input_password_handle}
-                    name={"password"}
+                    name="password"
                     r#ref={input_password_ref}
-                    placeholder={"Password"}
-                    error_message={"Password can't be blank!"}
-                    field_class={"relative mt-2 mb-2"}
-                    input_class={"input w-full px-4 py-2 rounded border border-pink-800 bg-gray-100"}
-                    error_class={"text-red-500 absolute text-sm"}
-                    required={true}
+                    placeholder="Password"
+                    error_message="Password can't be blank!"
+                    field_class="relative mt-2 mb-2"
+                    input_class="input w-full px-4 py-2 rounded border border-pink-800 bg-gray-100"
+                    error_class="text-red-500 absolute text-sm"
+                    required=true
                     valid_handle={password_valid_handle}
                     validate_function={validate_input}
-                    eye_active={"cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2 text-2xl text-gray-600 toggle-button fa fa-eye"}
-                    eye_disabled={"cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2 text-2xl text-gray-600 toggle-button fa fa-eye-slash"}
+                    eye_active="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2 text-2xl text-gray-600 toggle-button fa fa-eye"
+                    eye_disabled="cursor-pointer absolute right-4 top-1/2 transform -translate-y-1/2 text-2xl text-gray-600 toggle-button fa fa-eye-slash"
                 />
                 <div class="field btns text-center space-x-5 mt-10">
                     <button

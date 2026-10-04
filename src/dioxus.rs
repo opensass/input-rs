@@ -30,6 +30,10 @@ pub struct InputProps {
     #[props(default = "")]
     pub input_class: &'static str,
 
+    /// The inline CSS style to apply directly to the bare `<input>` element.
+    #[props(default = "")]
+    pub input_style: &'static str,
+
     /// The CSS class to be applied to the inner input element and icon.
     #[props(default = "")]
     pub field_class: &'static str,
@@ -208,6 +212,29 @@ pub struct InputProps {
     /// Same as the `width` attribute for `<img>` elements.
     #[props(default = None)]
     pub width: Option<u32>,
+
+    /// When `true`, bypasses wrapper divs and renders only the bare `<input>`.
+    /// Intended for composable slot components such as OTP inputs.
+    #[props(default = false)]
+    pub otp_mode: bool,
+
+    /// Callback fired when the input gains focus. Active only in `otp_mode`.
+    #[props(default)]
+    pub on_focus: Option<EventHandler<FocusEvent>>,
+
+    /// Callback fired when the input loses focus. Active only in `otp_mode`.
+    #[props(default)]
+    pub on_blur: Option<EventHandler<FocusEvent>>,
+
+    /// Raw `oninput` event handler, active only in `otp_mode`.
+    /// When provided, this fires **instead of** the default `handle`-setting `onchange`,
+    /// so the caller has full control over value clearing and slot notification.
+    #[props(default)]
+    pub on_input: Option<EventHandler<Event<FormData>>>,
+
+    /// `inputmode` attribute, hints the virtual keyboard type (e.g. `"numeric"`).
+    #[props(default = "")]
+    pub inputmode: &'static str,
 }
 
 impl PartialEq for InputProps {
@@ -262,6 +289,7 @@ impl PartialEq for InputProps {
             && self.step == other.step
             && self.value == other.value
             && self.width == other.width
+            && self.inputmode == other.inputmode
     }
 }
 
@@ -390,7 +418,7 @@ pub fn Input(mut props: InputProps) -> Element {
     let password_type = if is_eye_active() { "text" } else { "password" };
     let mut country = use_signal(String::default);
 
-    let onchange = {
+    let mut onchange = {
         move |e: Event<FormData>| {
             let value = e.value();
             props.handle.set(value.clone());
@@ -531,6 +559,43 @@ pub fn Input(mut props: InputProps) -> Element {
             }
         },
     };
+
+    if props.otp_mode {
+        let otp_oninput = {
+            let on_input_opt = props.on_input;
+            move |e: Event<FormData>| {
+                if let Some(ref h) = on_input_opt {
+                    h.call(e);
+                } else {
+                    onchange(e);
+                }
+            }
+        };
+        return rsx! {
+            input {
+                r#type: "{props.r#type}",
+                class: "{props.input_class}",
+                style: "{props.input_style}",
+                id: "{props.id}",
+                name: "{props.name}",
+                value: "{props.handle}",
+                placeholder: "{props.placeholder}",
+                aria_label: "{props.aria_label}",
+                aria_required: "{props.aria_required}",
+                aria_invalid: "{props.aria_invalid}",
+                aria_describedby: "{props.aria_describedby}",
+                autocomplete: props.autocomplete,
+                inputmode: props.inputmode,
+                maxlength: props.maxlength.map(|v| v.to_string()).unwrap_or_default(),
+                pattern: "{props.pattern}",
+                disabled: "{props.disabled}",
+                required: props.required,
+                oninput: otp_oninput,
+                onfocus: move |e| { if let Some(h) = &props.on_focus { h.call(e); } },
+                onblur: move |e| { if let Some(h) = &props.on_blur { h.call(e); } },
+            }
+        };
+    }
 
     rsx! {
         div {
