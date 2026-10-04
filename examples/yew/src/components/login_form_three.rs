@@ -1,7 +1,7 @@
 use regex::Regex;
 use serde::{Deserialize, Serialize};
 use wasm_bindgen_futures::spawn_local;
-use web_sys::{console, HtmlInputElement, Window};
+use web_sys::{HtmlInputElement, Window, console};
 use yew::prelude::*;
 
 use crate::api::auth::login_user;

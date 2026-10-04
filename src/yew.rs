@@ -34,6 +34,10 @@ pub struct Props {
     #[prop_or_default]
     pub input_class: &'static str,
 
+    /// The inline CSS style to apply directly to the bare `<input>` element.
+    #[prop_or_default]
+    pub input_style: &'static str,
+
     /// The CSS class to be applied to the inner input element and icon.
     #[prop_or_default]
     pub field_class: &'static str,
@@ -208,6 +212,20 @@ pub struct Props {
     /// Same as the `width` attribute for `<img>` elements.
     #[prop_or_default]
     pub width: Option<u32>,
+
+    /// When `true`, bypasses all wrapper elements (div, label, error) and renders
+    /// only the bare `<input>` element. Intended for use in composable slot-based
+    /// components such as OTP inputs.
+    #[prop_or_default]
+    pub otp_mode: bool,
+
+    /// Callback fired when the input gains focus. Only active when `otp_mode` is `true`.
+    #[prop_or_default]
+    pub on_focus: Callback<FocusEvent>,
+
+    /// Callback fired when the input loses focus. Only active when `otp_mode` is `true`.
+    #[prop_or_default]
+    pub on_blur: Callback<FocusEvent>,
 }
 
 /// A custom input component that handles user input and validation.
@@ -422,7 +440,7 @@ pub fn input(props: &Props) -> Html {
                     aria-required={props.aria_required}
                     aria-invalid={props.aria_invalid}
                     aria-describedby={props.aria_describedby}
-                    oninput={onchange}
+                    oninput={&onchange}
                     required={props.required}
                     autocomplete={props.autocomplete}
                     autocapitalize={props.autocapitalize}
@@ -455,7 +473,7 @@ pub fn input(props: &Props) -> Html {
                 aria-required={props.aria_required}
                 aria-invalid={props.aria_invalid}
                 aria-describedby={props.aria_describedby}
-                oninput={onchange}
+                oninput={&onchange}
                 required={props.required}
                 autocomplete={props.autocomplete}
                 autocapitalize={props.autocapitalize}
@@ -512,7 +530,7 @@ pub fn input(props: &Props) -> Html {
                 aria-required={props.aria_required}
                 aria-invalid={props.aria_invalid}
                 aria-describedby={props.aria_describedby}
-                oninput={onchange}
+                oninput={&onchange}
                 required={props.required}
                 autocomplete={props.autocomplete}
                 autocapitalize={props.autocapitalize}
@@ -529,6 +547,37 @@ pub fn input(props: &Props) -> Html {
             />
         },
     };
+
+    if props.otp_mode {
+        return html! {
+            <input
+                type={r#type}
+                class={props.input_class}
+                style={props.input_style}
+                id={props.id}
+                value={(*props.handle).clone()}
+                name={props.name}
+                ref={props.r#ref.clone()}
+                placeholder={props.placeholder}
+                aria-label={props.aria_label}
+                aria-required={props.aria_required}
+                aria-invalid={props.aria_invalid}
+                aria-describedby={props.aria_describedby}
+                oninput={&onchange}
+                onfocus={props.on_focus.clone()}
+                onblur={props.on_blur.clone()}
+                required={props.required}
+                autocomplete={props.autocomplete}
+                autocapitalize={props.autocapitalize}
+                readonly={props.readonly}
+                minlength={props.minlength.map(|v| v.to_string())}
+                maxlength={props.maxlength.map(|v| v.to_string())}
+                pattern={props.pattern}
+                size={props.size.map(|v| v.to_string())}
+                disabled={props.disabled}
+            />
+        };
+    }
 
     html! {
         <div class={props.class}>
